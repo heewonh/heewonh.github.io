@@ -20,7 +20,7 @@ html {
 
 body {
   background: $white;
-  font: 14px/1.4 $helvetica;
+  font: 14px/1.4 $helveticaNeue;
   color: $darkGray;
 }
 
@@ -222,9 +222,9 @@ img {
   color: $darkGray;
   cursor: pointer;
   font-family: $helveticaNeue;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 28px;
-  letter-spacing: 0px;
+  letter-spacing: 1px;
 }
 
 .site-description {
@@ -238,11 +238,10 @@ img {
 }
 
 nav {
-  float: left;
+  float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  padding-right: 20px;
   font-family: $helveticaNeue;
-  font-size: 14px;
+  font-size: 18px;
 
   @include mobile {
     float: left;
@@ -252,13 +251,12 @@ nav {
   }
 
   a {
-    margin-left: 0px;
+    margin-left: 20px;
     color: $darkGray;
-    text-align: left;
+    text-align: right;
     font-weight: 300;
-    letter-spacing: 0px;
-    padding: 12px;
-    float: left;
+    letter-spacing: 1px;
+
     @include mobile {
       margin: 0 10px;
       color: #189CC4;
