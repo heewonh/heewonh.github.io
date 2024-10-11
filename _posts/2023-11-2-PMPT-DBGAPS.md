@@ -3,7 +3,7 @@ layout: post
 title: Post Modern Portfolio Theory (PMPT) and its Application to the DB GAPS Competition
 ---
 
-This was a follow-up project to the [Modern Portfolio Theory (MPT) and its Application to the DB GAPS Competition]({{ site.baseurl }}/_posts/2023-7-20-MPT-DBGAPS). After achieving promising results using a MPT-based model, I became curious as to whether using a PMPT-based model would outperform the MPT-based model. 
+This was a follow-up project to the [Modern Portfolio Theory (MPT) and its Application to the DB GAPS Competition]({{ site.baseurl }}/_posts/2023-7-20-MPT-DBGAPS.md). After achieving promising results using a MPT-based model, I became curious as to whether using a PMPT-based model would outperform the MPT-based model. 
 
 I was fascinated by the idea behind PMPT (using downside risk or downside deviation as a measure of risk instead of variance) as it seemed more intuitive and well-aligned with investor objectives. After all, it seems more logical and straightforward to say that risk-averse investors aim to minimize 'losses' than to say they aim to minimize 'volatility'. Furthermore, defining risk as variance runs the risk (pun intended) of considering positive deviations from the mean as risky. This would penalize large positive returns under mean-variance optimization and could undermine the validity of the optimization results altogether.
 
