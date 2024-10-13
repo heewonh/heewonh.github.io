@@ -9,7 +9,7 @@ name: Heewon Hwang
 description: Undergraduate Student, Yonsei School of Business
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /images/jekyll-logo.jpg
+avatar:
 
 #
 # Flags below are optional
