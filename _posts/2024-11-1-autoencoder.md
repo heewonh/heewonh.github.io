@@ -20,19 +20,19 @@ $$
 
 Using this fundamental model, empirical analysis developed in two contrasting approaches: the "classical", **known factors** approach and the "Bayesian-like", **latent factors** approach.
 
-##### Known Factors Approach
+#### Known Factors Approach
 This approach is more classical to finance literature, having its roots in the Capital Asset Pricing Model (CAPM) and Fama-French Three Factor Model. Its core idea is using pre-determined factors derived from what is already "known" about asset returns and estimates the factor loadings (betas) through regression. For instance, Eugene Fama and Kenneth French famously observed that (1) small firms tend to outperform big firms in stock returns and (2) stocks with high book-to-market value tend to outperform those with low book-to-market value. They then utilized firm size and book-to-market value (along with market excess return) as the factors in their Three Factor Model.
 
 Now, as with any other regression problem, the known factors approach is limited by the fact that some degree of understanding or insight about asset returns is required beforehand. Like an endless loop, researchers must already *know something* about asset returns in order to extract meaningful factors that will help them *know something* asset returns. 
 
 Furthermore, since the initial knowledge or intuition that is readily available is likely to be imperfect, it could lead to the formation of factors that aren't informative. Finding just the right combination of factors to include in the model while leaving all irrelevant factors out is yet another issue.
 
-##### Latent Factors Approach
+#### Latent Factors Approach
 Using latent factors address the limitations of the known factors approach by employing a Bayesian-like approach. Its core idea is to remove the prerequisite of established knowledge and "let the data speak for itself". It treats all relevant factors as latent (existing but not yet discovered) and statistically extracts factors and their loadings purely from data. A famous technique used with latent factors is Principal Component Analysis (PCA), which extracts the principal components of a large variable set–factors in our case–by capturing the direction of maximum variance in the data.
 
 This approach, however, is limited in that (1) its factor loadings are static and (2) it only relies on returns data. It fails to take advantage of utilizing other relevant information that could be used as conditional data to improve the model's performance. Quite the opposite of the known factors approach, using latent factors has its limitations of not being able to utilize what is already known.
 
-##### Kelly, Pruitt, and Su (KPS, 2019)
+#### Kelly, Pruitt, and Su (KPS, 2019)
 KPS, which can be thought of as the predecessor study to this paper, created a novel approach of Instrumented Principal Component Analysis (IPCA) by taking the pros and leaving the cons of the above two approaches. While it maintains the overall design of the latent factor approach, it allows for the factor loadings to depend on observable characteristics ($z_{i,t-1}$) of stocks through linear mapping:
 $$
 r_{i,t} = \beta(z_{i,t-1}) f_t + \epsilon_{i,t}.
@@ -51,7 +51,7 @@ Below figure summarizes the background for the study:
 
 ### Why Autoencoder Makes Sense
 
-##### About Autoencoders
+#### About Autoencoders
 Autoencoder is a type of neural network that is primarily used for unsupervised learning tasks, such as dimensionality reduction and feature extraction. A simple autoencoder with a single hidden layer is shown below:
 ![[Pasted image 20241101201408.png|500]]
 
@@ -77,7 +77,7 @@ The underlying function of an autoencoder is similar to any other neural network
 
 What is special in autoencoders is in the optimization process. Instead of minimizing the error between the output and an external solution, the difference between the output and input are set to be minimized.
 
-##### Implementing Autoencoder Factor Models
+#### Implementing Autoencoder Factor Models
 A simple autoencoder as illustrated above has the same limitation as PCA as it doesn't utilize conditioned factor loadings. Like PCA, it only uses input returns data to extract factors and doesn't really bother with factor loadings. Hence, like the IPCA, a way to embed conditional estimates of factor loadings is needed, and it is accomplished by adding a separate neural network alongside the autoencoder that specializes in said task.
 
 This is well illustrated in the figure provided by GKX:
@@ -181,7 +181,7 @@ To see the performance of CA models in context, the following models were used a
 - PCA
 - IPCA
 
-##### Statistical Performance
+#### Statistical Performance
 The statistical performance of models were assessed on two different $R^2$ metrics:
 $$
 R^2_{\text{total}} = 1 - \frac{\sum_{(i,t) \in \text{OOS}} (r_{i,t} - \hat{\beta}'_{i,t-1} \hat{f}_t)^2}{\sum_{(i,t) \in \text{OOS}} r_{i,t}^2}.
@@ -203,14 +203,14 @@ $R^2_{\text{pred}}$ results are shown as below:
 ![[Pasted image 20241101225135.png|500]]
 This is the more interesting result. While with $R^2_{\text{total}}$ IPCA performed superbly, if not better than the CA models, its dominance is greatly subdued here. The performance of CA models are dominant across the board, but it is interesting to note that when based on managed portfolios, the dominance is less pronounced.
 
-##### Economic Performance
+#### Economic Performance
 To see if the CA models work in investing contexts, GKX conducts a comparison of Sharpe ratios. The ratios were calculated from investment portfolios that buys the highest expected return stocks (decile 10) and sells the lowest expected return stocks (decile 1) based on each model's sorting of stocks by their out of sample return forecasts. The portfolio was rebalanced monthly, and two versions, equal weighted and value weighted, were simulated.
 
 ![[Pasted image 20241101225950.png|500]]
 
 The results are similar to those from $R^2_{\text{pred}}$ where the overall magnitude of Sharpe ratios are ranked as CA2 > CA1, CA3 > IPCA > PCA > FF
 
-##### Characteristic Importance
+#### Characteristic Importance
 Using the CA models, GKX also looked at the relative importance of asset characteristics calculated from their impact on the $R^2$ metrics. The top 20 characteristics in each CA model were ranked as follows
 
 ![[Pasted image 20241101230550.png|500]]
