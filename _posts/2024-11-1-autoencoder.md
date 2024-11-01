@@ -10,6 +10,7 @@ Machine Learning (ML) in finance is a burgeoning field and a paper published by 
 Asset pricing ultimately deals with the question of why different assets are priced differently and earn different returns. The theoretical framework devised to tackle this matter was to use the notion of **risk compensation**–different assets have different "risk factors" and their returns can be derived from the compensation investors would receive for taking such risks.
 
 From this logic, the most basic asset pricing model could be set up as follows:
+
 $$
 r_{i,t} = \beta_{i,t} f_{t} + \epsilon_{i,t}
 $$
@@ -152,8 +153,7 @@ Together, the equations show a recursive computation of factor estimates ($f_t$)
 If the activation function were to be linear, the following optimization task would need to be solved to train the hyperparameters:
 
 $$
-\min \sum_{t=1}^{T} \left\| r_t - \beta'_{i,t} f_t \right\|^2 =
-\min_{W_0, W_1} \sum_{t=1}^{T} \left\| r_t - Z_{t-1} W_0 W_1 x_t \right\|^2
+\min \sum_{t=1}^{T} \left\| r_t - \beta'_{i,t} f_t \right\|^2 = \min_{W_0, W_1} \sum_{t=1}^{T} \left\| r_t - Z_{t-1} W_0 W_1 x_t \right\|^2
 $$
 
 - $Z_t = (z'_{1,t}, z'_{2,t}, \dots, z'_{N,t})'$ : input layer of asset characteristics (yellow layer of left network)
