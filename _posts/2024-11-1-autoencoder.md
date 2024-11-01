@@ -13,6 +13,7 @@ From this logic, the most basic asset pricing model could be set up as follows:
 $$
 r_{i,t} = \beta_{i,t} f_{t} + \epsilon_{i,t}
 $$
+
 - $r_{i,t}$ : return of asset $i$ at time $t$
 - $\beta_{i,t}$ : loading of factor $f$ for asset $i$ at time $t$
 - $f_t$ : factor value (return) at time $t$
@@ -34,12 +35,15 @@ This approach, however, is limited in that (1) its factor loadings are static an
 
 #### Kelly, Pruitt, and Su (KPS, 2019)
 KPS, which can be thought of as the predecessor study to this paper, created a novel approach of Instrumented Principal Component Analysis (IPCA) by taking the pros and leaving the cons of the above two approaches. While it maintains the overall design of the latent factor approach, it allows for the factor loadings to depend on observable characteristics ($z_{i,t-1}$) of stocks through linear mapping:
+
 $$
 r_{i,t} = \beta(z_{i,t-1}) f_t + \epsilon_{i,t}.
 $$
+
 $$
 \beta(z_{i,t-1}) = z_{i,t-1} \Gamma
 $$
+
 This lets the model not be overly reliant on established knowledge (like the known factor approach) but also not completely dismiss it (like the latent factor approach) by appropriately incorporating it as proxies for conditional and time-varying factor loadings. It effectively created a *conditional* latent factor approach that could utilize known factors for conditional factor loadings.
 
 KPS specifically used asset-specific covariates such as size, value, and momentum in estimating factor loadings, which not only improved the factor loading estimate but also improved the estimation of latent factors.
@@ -60,9 +64,11 @@ The autoencoder consists of 2 primary components: **encoder** and **decoder**. T
 In our context of extracting informative latent factors from asset returns, the hidden layer would contain such factors as compressed representation of asset returns.
 
 A mathematical representation of what goes on inside autoencoders can be outlined as below. The equation is a recursive formula describing a vector of outputs from layer $l$ $(l>0)$ :
+
 $$
 r^{(l)} = g \left( b^{(l-1)} + W^{(l-1)} r^{(l-1)} \right),
 $$
+
 - $N$ : number of inputs
 - $L$ : number of layers
 - $l$ : given layer
@@ -106,39 +112,50 @@ A minor modification was also made to the autoencoder's final output layer, wher
 Below is a mathematical representation of the workings of the new model.
 
 First, recall from the beginning that the most basic asset pricing model can be represented as follows:
+
 $$
 r_{i,t} = \beta_{i,t} f_{t} + \epsilon_{i,t}
 $$
 
 The left neural network of the model used for conditional factor loading estimates can be mathematically depicted as follows:
+
 $$
 z_{i,t-1}^{(0)} = z_{i,t-1},
 $$
+
 $$
 z_{i,t-1}^{(l)} = g \left( b^{(l-1)} + W^{(l-1)} z_{i,t-1}^{(l-1)} \right), \quad l = 1, \dots, L_\beta,
 $$
+
 $$
 \beta_{i,t-1} = b^{(L_\beta)} + W^{(L_\beta)} z_{i,t-1}^{(L_\beta)}.
 $$
+
 Altogether, it is a recursive computation of conditional factor loadings ($\beta_{i,t-1}$) using lagged asset characteristics $z_{i,t-1}$ as inputs. The asset characteristics are lagged as their data is not readily available; data update intervals range from monthly, quarterly, to annual releases.
 
 The right autoencoder of the model used for factor estimates can be mathematically shown as follows: 
+
 $$
 r_{t}^{(0)} = r_{t},
 $$
+
 $$
 r_{t}^{(l)} = \tilde{g} \left( \tilde{b}^{(l-1)} + \tilde{W}^{(l-1)} r_{t}^{(l-1)} \right), \quad l = 1, \dots, L_f,
 $$
+
 $$
 f_{t} = \tilde{b}^{(L_f)} + \tilde{W}^{(L_f)} r_{t}^{(L_f)}.
 $$
+
 Together, the equations show a recursive computation of factor estimates ($f_t$) using a standard autoencoder.
 
 If the activation function were to be linear, the following optimization task would need to be solved to train the hyperparameters:
+
 $$
 \min \sum_{t=1}^{T} \left\| r_t - \beta'_{i,t} f_t \right\|^2 =
 \min_{W_0, W_1} \sum_{t=1}^{T} \left\| r_t - Z_{t-1} W_0 W_1 x_t \right\|^2
 $$
+
 - $Z_t = (z'_{1,t}, z'_{2,t}, \dots, z'_{N,t})'$ : input layer of asset characteristics (yellow layer of left network)
 - $\beta'_{i,t} = Z_{t-1} W_0'$ : conditional factor loadings estimate (green layer of left network)
 - $x_t = \left( Z_{t-1}' Z_{t-1} \right)^{-1} Z_{t-1} r_t$ : input layer of portfolio returns (layer of pink neurons of right autoencoder)
@@ -183,14 +200,17 @@ To see the performance of CA models in context, the following models were used a
 
 #### Statistical Performance
 The statistical performance of models were assessed on two different $R^2$ metrics:
+
 $$
 R^2_{\text{total}} = 1 - \frac{\sum_{(i,t) \in \text{OOS}} (r_{i,t} - \hat{\beta}'_{i,t-1} \hat{f}_t)^2}{\sum_{(i,t) \in \text{OOS}} r_{i,t}^2}.
 $$
+
 - Tests how well the model can explain the variation in returns across stocks by using "contemporaneous" factor loadings ($\hat{\beta}'_{i,t-1}$) and factor realizations ($\hat{f}_t$)
 
 $$
 R^2_{\text{pred}} = 1 - \frac{\sum_{(i,t) \in \text{OOS}} (r_{i,t} - \hat{\beta}'_{i,t-1} \hat{\lambda}_{t-1})^2}{\sum_{(i,t) \in \text{OOS}} r_{i,t}^2}.
 $$
+
 - Evaluates the predictive power of the model by examining how well it can predict future stock returns by using lagged average of factors up to time $t-1$ ($\hat{\lambda}_{t-1}$) instead of factors for each time period
 
 $R^2_{\text{total}}$ results are shown as below:
