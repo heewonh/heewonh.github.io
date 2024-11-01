@@ -15,8 +15,8 @@ $$
 r_{i,t} = \beta_{i,t} f_{t} + \epsilon_{i,t}
 $$
 
-- $r_{i,t}$ : return of asset $i$ at time $t$
-- $\beta_{i,t}$ : loading of factor $f$ for asset $i$ at time $t$
+- \$r_{i,t}\$ : return of asset $i$ at time $t$
+- \$\beta_{i,t}\$ : loading of factor $f$ for asset $i$ at time $t$
 - $f_t$ : factor value (return) at time $t$
 - $\epsilon_{i,t}$ : error term (noise) for asset $i$ at time $t$
 
