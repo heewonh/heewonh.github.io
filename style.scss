@@ -107,7 +107,8 @@ li{
 }
 
 ul {
-  list-style-type: disc;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 ol {
@@ -119,17 +120,18 @@ ol ul, ul ol, ul ul, ol ol {
 }
 
 ul ul, ol ul {
-  list-style-type: disc;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 ul li::before {
-  // content: "•"; /* Unicode bullet character */
-  color: lightgray; /* Set bullet color */
-  display: inline-block; 
+  content: "•"; /* Unicode bullet character */
+  color: rgb(188, 188, 188); /* Set bullet color */
+  font-size: 1.3em; /* Optional: Adjust bullet size */
 }
 
 ol li::marker {
-  color: lightgray; /* Set bullet color */
+  color: rgb(188, 188, 188); /* Set bullet color */
 }
 
 em, i {
