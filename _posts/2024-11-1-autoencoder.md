@@ -96,7 +96,7 @@ A simple autoencoder as illustrated above has the same limitation as PCA as it d
 This is well illustrated in the figure provided by GKX:
 
 <div style="text-align: center;">
-	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="500">
+	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="600">
 </div>
 
 The neural network on the left is the newly introduced network that is tasked with conditional factor loading estimations. 
@@ -108,7 +108,7 @@ The network conducts conditional factor loading estimates by using the "known" a
 The neural network on the right side, then, must be the autoencoder that has and will be used for factor estimation. Yet, a modification is made to the autoencoder's input layer for practical and interesting reasons.
 
 > Note: it must be noted that the autoencoder technically encompasses the following portion of the overall model:
-> ![[Screenshot 2024-11-01 at 11.45.56 PM.png|500]]
+> <img src="{{ site.baseurl }}/images/autoencoder-GKX-note.png" alt="autoencoder part of GKX model" width="500">
 
 As also shown in the illustration, the input layer undergoes a clustering process whereby asset returns are grouped into portfolio returns. GKX explains the modification stating the following reasons
 1. To reduce the number if weight parameters that need to be calculated
@@ -224,12 +224,18 @@ $$
 
 $R^2_{\text{total}}$ results are shown as below:
 
-![[Pasted image 20241101224617.png|500]]
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-R2-total.png" alt="R squared total results" width="500">
+</div>
+
 From using individual stock returns as input, the performance of static models (FF, PCA) are poor whereas the conditional models (IPCA, CA0~3) show strong performance. When using managed portfolio returns, performance of FF greatly increase but still underperforms the conditional models
 
 $R^2_{\text{pred}}$ results are shown as below:
 
-![[Pasted image 20241101225135.png|500]]
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-R2-pred.png" alt="R squared pred results" width="500">
+</div>	
+
 This is the more interesting result. While with $R^2_{\text{total}}$ IPCA performed superbly, if not better than the CA models, its dominance is greatly subdued here. The performance of CA models are dominant across the board, but it is interesting to note that when based on managed portfolios, the dominance is less pronounced.
 
 #### Economic Performance
@@ -242,7 +248,9 @@ The results are similar to those from $R^2_{\text{pred}}$ where the overall magn
 #### Characteristic Importance
 Using the CA models, GKX also looked at the relative importance of asset characteristics calculated from their impact on the $R^2$ metrics. The top 20 characteristics in each CA model were ranked as follows
 
-![[Pasted image 20241101230550.png|500]]
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="500">
+</div>
 
 It was first observed that top 20 characteristics were really what mattered–top 20 accounted for 80% of explanatory power in CA0 and 90% in CA1~3. Also, all CA variants pointed to the same 3 strongest characteristic categories: price trend, liquidity, and risk measures.
 - price trend
@@ -253,10 +261,16 @@ It was first observed that top 20 characteristics were really what mattered–to
 	- total and idiosyncratic return volatility (retvol, idiovol), market beta (beta), and beta- squared (betasq)
 
 The full rank list is shown as follows:
-![[Pasted image 20241101230951.png|500]]
+
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-full-characteristics.png" alt="full characteristics" width="500">
+</div>
 
 GKX also ranked the characteristic importance for  factor loading (beta) and factor networks separately but found similar results (left: factor loading, right: factor)
-![[Pasted image 20241101231133.png|500]]
+
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-split-characteristics.png" alt="split characteristics" width="500">
+</div>
 
 ### Thoughts
 I believe GKX provides a very interesting novel asset pricing model that well employs ML techniques in order to address the limitations of previous asset pricing models. While dealing with non-linear models in finance can be dangerous due to the low signal-to-noise ratio in financial data and thus the greater likelihood of overfitting, it can be seen that GKX imposed numerous cautionary measures to account for such risks.
