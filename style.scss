@@ -107,7 +107,7 @@ li{
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: disc;
 }
 
 ol {
@@ -123,11 +123,9 @@ ul ul, ol ul {
 }
 
 ul li::before {
-  content: "•"; /* Unicode bullet character */
+  // content: "•"; /* Unicode bullet character */
   color: lightgray; /* Set bullet color */
   display: inline-block; 
-  font-size: 1.3em; /* Optional: Adjust bullet size */
-  margin-right: 0.5em; /* Space between bullet and text */
 }
 
 ol li::marker {
