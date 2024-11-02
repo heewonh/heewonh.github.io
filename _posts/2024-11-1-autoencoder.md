@@ -55,7 +55,9 @@ Below figure summarizes the background for the study:
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="400">
-	<figcaption>Background: evolution of asset pricing models</figcaption>
+	<figcaption style="font-size: 0.8em; color: gray; font-style: italic;">
+		Background of asset pricing model development
+	</figcaption>
 </figure>
 
 ### Why Autoencoder Makes Sense
