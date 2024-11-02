@@ -157,7 +157,7 @@ $$
 $$
 
 <!-- - $Z_t = (z'_{1,t}, z'_{2,t}, \dots, z'_{N,t})'$ : input layer of asset characteristics (yellow layer of left network) -->
-- $Z_t = (z\'_{1,t}, z\'_{2,t}, \dots, z\'_{N,t})\'$ : input layer of asset characteristics (yellow layer of left network)
+- \\( Z_t = (z'_{1,t}, z'_{2,t}, \dots, z'_{N,t})' \\) : input layer of asset characteristics (yellow layer of left network)
 - $\beta'_{i,t} = Z_{t-1} W_0'$ : conditional factor loadings estimate (green layer of left network)
 - $x_t = \left( Z_{t-1}' Z_{t-1} \right)^{-1} Z_{t-1} r_t$ : input layer of portfolio returns (layer of pink neurons of right autoencoder)
 - $f_t = W_1 x_t$ : factor estimates (layer of purple neurons of right autoencoder)
