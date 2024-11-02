@@ -38,7 +38,7 @@ This approach, however, is limited in that (1) its factor loadings are static an
 KPS, which can be thought of as the predecessor study to this paper, created a novel approach of Instrumented Principal Component Analysis (IPCA) by taking the pros and leaving the cons of the above two approaches. While it maintains the overall design of the latent factor approach, it allows for the factor loadings to depend on observable characteristics ($z_{i,t-1}$) of stocks through linear mapping:
 
 $$
-r_{i,t} = \beta(z_{i,t-1}) f_t + \epsilon_{i,t}
+r_{i,t} = \beta(z_{i,t-1}) f_t + \epsilon_{i,t},
 $$
 
 $$
@@ -53,18 +53,19 @@ While IPCA is a notable improvement to empirical methodology in asset pricing, i
 
 Below figure summarizes the background for the study:
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="400">
-</div>
+	<figcaption>Background: evolution of asset pricing models</figcaption>
+</figure>
 
 ### Why Autoencoder Makes Sense
 
 #### About Autoencoders
 Autoencoder is a type of neural network that is primarily used for unsupervised learning tasks, such as dimensionality reduction and feature extraction. A simple autoencoder with a single hidden layer is shown below:
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-simple.png" alt="simple autoencoder" width="500">
-</div>
+</figure>
 
 The autoencoder consists of 2 primary components: **encoder** and **decoder**. The encoder takes input data and compresses it into a lower dimensional representation in the hidden layer (also called the bottleneck). Since dimensionality is to be reduced, the hidden layer contains fewer neurons than the input layer. After the encoding process, the decoder aims to reconstruct the original input data from its lower dimensional representation. The decoding result is stored in the output layer having the same dimensions as the input layer.
 
@@ -95,19 +96,19 @@ A simple autoencoder as illustrated above has the same limitation as PCA as it d
 
 This is well illustrated in the figure provided by GKX:
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="700">
-</div>
+</figure>
 
 The neural network on the left is the newly introduced network that is tasked with conditional factor loading estimations. 
 
-> Note: unlike how an autoencoder was used to extract factors, the new network is an ordinary neural network and not an autoencoder. This is evident as the input layer of the network has different dimensions from the output layer. 
+> **Note**: unlike how an autoencoder was used to extract factors, the new network is an ordinary neural network and not an autoencoder. This is evident as the input layer of the network has different dimensions from the output layer. 
 
 The network conducts conditional factor loading estimates by using the "known" asset characteristics as input, performing the usual forward propagation, and outputing factor loadings as a $N \times K$ matrix of betas.
 
 The neural network on the right side, then, must be the autoencoder that has and will be used for factor estimation. Yet, a modification is made to the autoencoder's input layer for practical and interesting reasons.
 
-> Note: it must be noted that the autoencoder technically encompasses the following portion of the overall model:
+> **Note**: it must be noted that the autoencoder technically encompasses the following portion of the overall model:
 > <img src="{{ site.baseurl }}/images/autoencoder-GKX-note.png" alt="autoencoder part of GKX model" width="400">
 
 As also shown in the illustration, the input layer undergoes a clustering process whereby asset returns are grouped into portfolio returns. GKX explains the modification stating the following reasons
@@ -170,7 +171,7 @@ $$
 - $x_t = \left( Z_{t-1}' Z_{t-1} \right)^{-1} Z_{t-1} r_t$ : input layer of portfolio returns (layer of pink neurons of right autoencoder)
 - $f_t = W_1 x_t$ : factor estimates (layer of purple neurons of right autoencoder)
 
-> Note: in testing the model, non-linear activation function (ReLU) was used
+> **Note**: in testing the model, non-linear activation function (ReLU) was used
 
 For reference: methods used to prevent overfitting issues:
 - training, validation, testing
@@ -224,35 +225,35 @@ $$
 
 $R^2_{\text{total}}$ results are shown as below:
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-R2-total.png" alt="R squared total results" width="500">
-</div>
+</figure>
 
 From using individual stock returns as input, the performance of static models (FF, PCA) are poor whereas the conditional models (IPCA, CA0~3) show strong performance. When using managed portfolio returns, performance of FF greatly increase but still underperforms the conditional models
 
 $R^2_{\text{pred}}$ results are shown as below:
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-R2-pred.png" alt="R squared pred results" width="500">
-</div>	
+</figure>	
 
 This is the more interesting result. While with $R^2_{\text{total}}$ IPCA performed superbly, if not better than the CA models, its dominance is greatly subdued here. The performance of CA models are dominant across the board, but it is interesting to note that when based on managed portfolios, the dominance is less pronounced.
 
 #### Economic Performance
 To see if the CA models work in investing contexts, GKX conducts a comparison of Sharpe ratios. The ratios were calculated from investment portfolios that buys the highest expected return stocks (decile 10) and sells the lowest expected return stocks (decile 1) based on each model's sorting of stocks by their out of sample return forecasts. The portfolio was rebalanced monthly, and two versions, equal weighted and value weighted, were simulated.
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-sharpe.png" alt="Sharpe ratio results" width="500">
-</div>	
+</figure>	
 
 The results are similar to those from $R^2_{\text{pred}}$ where the overall magnitude of Sharpe ratios are ranked as CA2 > CA1, CA3 > IPCA > PCA > FF
 
 #### Characteristic Importance
 Using the CA models, GKX also looked at the relative importance of asset characteristics calculated from their impact on the $R^2$ metrics. The top 20 characteristics in each CA model were ranked as follows
 
-<div style="text-align: center;">
-	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="600">
-</div>
+<figure style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="700">
+</figure>
 
 It was first observed that top 20 characteristics were really what mattered–top 20 accounted for 80% of explanatory power in CA0 and 90% in CA1~3. Also, all CA variants pointed to the same 3 strongest characteristic categories: price trend, liquidity, and risk measures.
 - price trend
@@ -264,15 +265,15 @@ It was first observed that top 20 characteristics were really what mattered–to
 
 The full rank list is shown as follows:
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-full-characteristics.png" alt="full characteristics" width="500">
-</div>
+</figure>
 
 GKX also ranked the characteristic importance for  factor loading (beta) and factor networks separately but found similar results (left: factor loading, right: factor)
 
-<div style="text-align: center;">
+<figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-split-characteristics.png" alt="split characteristics" width="500">
-</div>
+</figure>
 
 ### Thoughts
 I believe GKX provides a very interesting novel asset pricing model that well employs ML techniques in order to address the limitations of previous asset pricing models. While dealing with non-linear models in finance can be dangerous due to the low signal-to-noise ratio in financial data and thus the greater likelihood of overfitting, it can be seen that GKX imposed numerous cautionary measures to account for such risks.
