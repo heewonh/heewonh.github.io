@@ -108,12 +108,10 @@ li{
 
 ul {
   list-style-type: disc;
-  color: gray;
 }
 
 ol {
   list-style-type: decimal;
-  color: gray;
 }
 
 ol ul, ul ol, ul ul, ol ol {
@@ -124,21 +122,17 @@ ul ul, ol ul {
   list-style-type: disc;
 }
 
-// ul li::before {
-//   content: "•"; /* Unicode bullet character */
-//   color: gray; /* Set bullet color */
-//   display: inline-block; 
-//   width: 1em; /* Adjust width to match padding */
-//   margin-right: 0.5em; /* Space between bullet and text */
-// }
+ul li::before {
+  content: "•"; /* Unicode bullet character */
+  color: lightgray; /* Set bullet color */
+  display: inline-block; 
+  width: 1em; /* Adjust width to match padding */
+  margin-right: 0.5em; /* Space between bullet and text */
+}
 
-// ol li::before {
-//   content: "•"; /* Unicode bullet character */
-//   color: gray; /* Set bullet color */
-//   display: inline-block; 
-//   width: 1em; /* Adjust width to match padding */
-//   margin-right: 0.5em; /* Space between bullet and text */
-// }
+ol li::marker {
+  color: lightgray; /* Set bullet color */
+}
 
 em, i {
   font-style: italic;
