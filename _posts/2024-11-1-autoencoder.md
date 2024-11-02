@@ -55,7 +55,7 @@ Below figure summarizes the background for the study:
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="400">
-	<figcaption style="font-size: 0.8em; color: gray; font-style: italic;">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Background of asset pricing model development
 	</figcaption>
 </figure>
@@ -67,6 +67,9 @@ Autoencoder is a type of neural network that is primarily used for unsupervised 
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-simple.png" alt="simple autoencoder" width="500">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Simple autoencoder neural network (from Gu et al. (2021))
+	</figcaption>
 </figure>
 
 The autoencoder consists of 2 primary components: **encoder** and **decoder**. The encoder takes input data and compresses it into a lower dimensional representation in the hidden layer (also called the bottleneck). Since dimensionality is to be reduced, the hidden layer contains fewer neurons than the input layer. After the encoding process, the decoder aims to reconstruct the original input data from its lower dimensional representation. The decoding result is stored in the output layer having the same dimensions as the input layer.
@@ -100,6 +103,9 @@ This is well illustrated in the figure provided by GKX:
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="700">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Autoencoder asset pricing model proposed by GKX (from Gu et al. (2021))
+	</figcaption>
 </figure>
 
 The neural network on the left is the newly introduced network that is tasked with conditional factor loading estimations. 
@@ -229,6 +235,9 @@ $R^2_{\text{total}}$ results are shown as below:
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-R2-total.png" alt="R squared total results" width="500">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Total R-Squared result (from Gu et al. (2021))
+	</figcaption>
 </figure>
 
 From using individual stock returns as input, the performance of static models (FF, PCA) are poor whereas the conditional models (IPCA, CA0~3) show strong performance. When using managed portfolio returns, performance of FF greatly increase but still underperforms the conditional models
@@ -237,6 +246,9 @@ $R^2_{\text{pred}}$ results are shown as below:
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-R2-pred.png" alt="R squared pred results" width="500">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Predictive R-Squared result (from Gu et al. (2021))
+	</figcaption>
 </figure>	
 
 This is the more interesting result. While with $R^2_{\text{total}}$ IPCA performed superbly, if not better than the CA models, its dominance is greatly subdued here. The performance of CA models are dominant across the board, but it is interesting to note that when based on managed portfolios, the dominance is less pronounced.
@@ -246,6 +258,9 @@ To see if the CA models work in investing contexts, GKX conducts a comparison of
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-sharpe.png" alt="Sharpe ratio results" width="500">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Sharpe ratio result (from Gu et al. (2021))
+	</figcaption>
 </figure>	
 
 The results are similar to those from $R^2_{\text{pred}}$ where the overall magnitude of Sharpe ratios are ranked as CA2 > CA1, CA3 > IPCA > PCA > FF
@@ -255,6 +270,9 @@ Using the CA models, GKX also looked at the relative importance of asset charact
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="700">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Top 20 asset characteristics (from Gu et al. (2021))
+	</figcaption>
 </figure>
 
 It was first observed that top 20 characteristics were really what mattered–top 20 accounted for 80% of explanatory power in CA0 and 90% in CA1~3. Also, all CA variants pointed to the same 3 strongest characteristic categories: price trend, liquidity, and risk measures.
@@ -269,12 +287,18 @@ The full rank list is shown as follows:
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-full-characteristics.png" alt="full characteristics" width="500">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Full rank of asset characteristics (from Gu et al. (2021))
+	</figcaption>
 </figure>
 
 GKX also ranked the characteristic importance for  factor loading (beta) and factor networks separately but found similar results (left: factor loading, right: factor)
 
 <figure style="text-align: center;">
 	<img src="{{ site.baseurl }}/images/autoencoder-split-characteristics.png" alt="split characteristics" width="500">
+	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
+		Factor loading and Factor ranks of asset characteristics (from Gu et al. (2021))
+	</figcaption>
 </figure>
 
 ### Thoughts
