@@ -54,7 +54,7 @@ While IPCA is a notable improvement to empirical methodology in asset pricing, i
 Below figure summarizes the background for the study:
 
 <div style="text-align: center;">
-	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="500">
+	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="400">
 </div>
 
 ### Why Autoencoder Makes Sense
@@ -96,7 +96,7 @@ A simple autoencoder as illustrated above has the same limitation as PCA as it d
 This is well illustrated in the figure provided by GKX:
 
 <div style="text-align: center;">
-	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="600">
+	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="700">
 </div>
 
 The neural network on the left is the newly introduced network that is tasked with conditional factor loading estimations. 
@@ -108,7 +108,7 @@ The network conducts conditional factor loading estimates by using the "known" a
 The neural network on the right side, then, must be the autoencoder that has and will be used for factor estimation. Yet, a modification is made to the autoencoder's input layer for practical and interesting reasons.
 
 > Note: it must be noted that the autoencoder technically encompasses the following portion of the overall model:
-> <img src="{{ site.baseurl }}/images/autoencoder-GKX-note.png" alt="autoencoder part of GKX model" width="500">
+> <img src="{{ site.baseurl }}/images/autoencoder-GKX-note.png" alt="autoencoder part of GKX model" width="400">
 
 As also shown in the illustration, the input layer undergoes a clustering process whereby asset returns are grouped into portfolio returns. GKX explains the modification stating the following reasons
 1. To reduce the number if weight parameters that need to be calculated
@@ -251,7 +251,7 @@ The results are similar to those from $R^2_{\text{pred}}$ where the overall magn
 Using the CA models, GKX also looked at the relative importance of asset characteristics calculated from their impact on the $R^2$ metrics. The top 20 characteristics in each CA model were ranked as follows
 
 <div style="text-align: center;">
-	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="500">
+	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="600">
 </div>
 
 It was first observed that top 20 characteristics were really what mattered–top 20 accounted for 80% of explanatory power in CA0 and 90% in CA1~3. Also, all CA variants pointed to the same 3 strongest characteristic categories: price trend, liquidity, and risk measures.
