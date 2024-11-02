@@ -241,7 +241,9 @@ This is the more interesting result. While with $R^2_{\text{total}}$ IPCA perfor
 #### Economic Performance
 To see if the CA models work in investing contexts, GKX conducts a comparison of Sharpe ratios. The ratios were calculated from investment portfolios that buys the highest expected return stocks (decile 10) and sells the lowest expected return stocks (decile 1) based on each model's sorting of stocks by their out of sample return forecasts. The portfolio was rebalanced monthly, and two versions, equal weighted and value weighted, were simulated.
 
-![[Pasted image 20241101225950.png|500]]
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-sharpe.png" alt="Sharpe ratio results" width="500">
+</div>	
 
 The results are similar to those from $R^2_{\text{pred}}$ where the overall magnitude of Sharpe ratios are ranked as CA2 > CA1, CA3 > IPCA > PCA > FF
 
