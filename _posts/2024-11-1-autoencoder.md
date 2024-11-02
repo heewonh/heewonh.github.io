@@ -53,7 +53,7 @@ While IPCA is a notable improvement to empirical methodology in asset pricing, i
 
 Below figure summarizes the background for the study:
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="400">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Background of asset pricing model development
@@ -65,7 +65,7 @@ Below figure summarizes the background for the study:
 #### About Autoencoders
 Autoencoder is a type of neural network that is primarily used for unsupervised learning tasks, such as dimensionality reduction and feature extraction. A simple autoencoder with a single hidden layer is shown below:
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-simple.png" alt="simple autoencoder" width="500">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Simple autoencoder neural network (from Gu et al. (2021))
@@ -101,7 +101,7 @@ A simple autoencoder as illustrated above has the same limitation as PCA as it d
 
 This is well illustrated in the figure provided by GKX:
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="700">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Autoencoder asset pricing model proposed by GKX (from Gu et al. (2021))
@@ -233,7 +233,7 @@ $$
 
 $R^2_{\text{total}}$ results are shown as below:
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-R2-total.png" alt="R squared total results" width="500">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Total R-Squared result (from Gu et al. (2021))
@@ -244,7 +244,7 @@ From using individual stock returns as input, the performance of static models (
 
 $R^2_{\text{pred}}$ results are shown as below:
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-R2-pred.png" alt="R squared pred results" width="500">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Predictive R-Squared result (from Gu et al. (2021))
@@ -256,7 +256,7 @@ This is the more interesting result. While with $R^2_{\text{total}}$ IPCA perfor
 #### Economic Performance
 To see if the CA models work in investing contexts, GKX conducts a comparison of Sharpe ratios. The ratios were calculated from investment portfolios that buys the highest expected return stocks (decile 10) and sells the lowest expected return stocks (decile 1) based on each model's sorting of stocks by their out of sample return forecasts. The portfolio was rebalanced monthly, and two versions, equal weighted and value weighted, were simulated.
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-sharpe.png" alt="Sharpe ratio results" width="500">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Sharpe ratio result (from Gu et al. (2021))
@@ -268,7 +268,7 @@ The results are similar to those from $R^2_{\text{pred}}$ where the overall magn
 #### Characteristic Importance
 Using the CA models, GKX also looked at the relative importance of asset characteristics calculated from their impact on the $R^2$ metrics. The top 20 characteristics in each CA model were ranked as follows
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-top20-characteristics.png" alt="top 20 characteristics" width="700">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Top 20 asset characteristics (from Gu et al. (2021))
@@ -285,7 +285,7 @@ It was first observed that top 20 characteristics were really what mattered–to
 
 The full rank list is shown as follows:
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-full-characteristics.png" alt="full characteristics" width="500">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Full rank of asset characteristics (from Gu et al. (2021))
@@ -294,7 +294,7 @@ The full rank list is shown as follows:
 
 GKX also ranked the characteristic importance for  factor loading (beta) and factor networks separately but found similar results (left: factor loading, right: factor)
 
-<figure style="text-align: center;">
+<figure style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
 	<img src="{{ site.baseurl }}/images/autoencoder-split-characteristics.png" alt="split characteristics" width="500">
 	<figcaption style="font-size: 0.9em; color: gray; font-style: italic;">
 		Factor loading and Factor ranks of asset characteristics (from Gu et al. (2021))
@@ -313,6 +313,6 @@ Secondly, I had to wonder if the the overall data was enough to begin with. whil
 Lastly, I would like to point out an area of further research that could branch off from the work of GKX. I found the characteristic importance finding to be very interesting and think insights from it could be re-implemented within the autoencoder model. Firstly, it could be used for practical purposes: since only 20 of the 94 asset characteristics were realistically important, we could cut down on the asset characteristic input data for the factor loading neural network to only include the important 20 characteristics. This could speed up the training and re-fitting process of the model. It might also be interesting to see the performance of classic known factor model fitted with the top 20 asset characteristics as its factors. It could greatly improve the model's performance but could also have adverse affects as the correlational relationship between the asset characteristics is yet to be known.
 
 ### References
-- Gu S, Kelly B, Xiu D (2021) Autoencoder asset pricing models. J. Econometrics 222(1):429–450.
-- Kelly, Bryan, Pruitt, Seth, Su, Yinan, 2019. Characteristics are covariances: A unified model of risk and return. J. Financ. Econ.
+- Gu S., Kelly B., Xiu D. (2021) Autoencoder asset pricing models. J. Econometrics 222 (1), 429–450.
+- Kelly, B., Pruitt, S., Su, Y. (2019) Characteristics are covariances: A unified model of risk and return. J. Financ. Econ. 134 (3), 501–524.
 - [IBM Technology YouTube Video about Autoencoders](https://www.youtube.com/watch?v=qiUEgSCyY5o&ab_channel=IBMTechnology)
