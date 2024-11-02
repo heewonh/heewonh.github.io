@@ -53,13 +53,18 @@ While IPCA is a notable improvement to empirical methodology in asset pricing, i
 
 Below figure summarizes the background for the study:
 
-<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="500">
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-background.png" alt="study background" width="500">
+</div>
 
 ### Why Autoencoder Makes Sense
 
 #### About Autoencoders
 Autoencoder is a type of neural network that is primarily used for unsupervised learning tasks, such as dimensionality reduction and feature extraction. A simple autoencoder with a single hidden layer is shown below:
-![[Pasted image 20241101201408.png|500]]
+
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-simple.png" alt="simple autoencoder" width="500">
+</div>
 
 The autoencoder consists of 2 primary components: **encoder** and **decoder**. The encoder takes input data and compresses it into a lower dimensional representation in the hidden layer (also called the bottleneck). Since dimensionality is to be reduced, the hidden layer contains fewer neurons than the input layer. After the encoding process, the decoder aims to reconstruct the original input data from its lower dimensional representation. The decoding result is stored in the output layer having the same dimensions as the input layer.
 
@@ -89,7 +94,10 @@ What is special in autoencoders is in the optimization process. Instead of minim
 A simple autoencoder as illustrated above has the same limitation as PCA as it doesn't utilize conditioned factor loadings. Like PCA, it only uses input returns data to extract factors and doesn't really bother with factor loadings. Hence, like the IPCA, a way to embed conditional estimates of factor loadings is needed, and it is accomplished by adding a separate neural network alongside the autoencoder that specializes in said task.
 
 This is well illustrated in the figure provided by GKX:
-![[Pasted image 20241101211447.png|600]]
+
+<div style="text-align: center;">
+	<img src="{{ site.baseurl }}/images/autoencoder-GKX.png" alt="GKX autoencoder model" width="500">
+</div>
 
 The neural network on the left is the newly introduced network that is tasked with conditional factor loading estimations. 
 
