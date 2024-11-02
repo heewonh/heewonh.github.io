@@ -52,7 +52,7 @@ KPS specifically used asset-specific covariates such as size, value, and momentu
 While IPCA is a notable improvement to empirical methodology in asset pricing, it is still bounded by the linearity restriction of PCA which allows for the simplification of reality, but fails to capture its complexities. And this is where the successor study GKX comes in. GKX generalizes the IPCA model by allowing for non-linearity with the use of autoencoder neural networks.
 
 Below figure summarizes the background for the study:
-![[Pasted image 20241101200408.png|500]]
+![study background](images/Pasted image 20241101200408.png)
 
 ### Why Autoencoder Makes Sense
 
@@ -92,7 +92,7 @@ This is well illustrated in the figure provided by GKX:
 
 The neural network on the left is the newly introduced network that is tasked with conditional factor loading estimations. 
 
-> A minor cautionary note: unlike how an autoencoder was used to extract factors, the new network is an ordinary neural network and not an autoencoder. This is evident as the input layer of the network has different dimensions from the output layer. 
+> Note: unlike how an autoencoder was used to extract factors, the new network is an ordinary neural network and not an autoencoder. This is evident as the input layer of the network has different dimensions from the output layer. 
 
 The network conducts conditional factor loading estimates by using the "known" asset characteristics as input, performing the usual forward propagation, and outputing factor loadings as a $N \times K$ matrix of betas.
 
@@ -263,4 +263,4 @@ Lastly, I would like to point out an area of further research that could branch 
 ### References
 - Gu S, Kelly B, Xiu D (2021) Autoencoder asset pricing models. J. Econometrics 222(1):429–450.
 - Kelly, Bryan, Pruitt, Seth, Su, Yinan, 2019. Characteristics are covariances: A unified model of risk and return. J. Financ. Econ.
-- https://www.youtube.com/watch?v=qiUEgSCyY5o&ab_channel=IBMTechnology
+- [IBM Technology YouTube Video about Autoencoders](https://www.youtube.com/watch?v=qiUEgSCyY5o&ab_channel=IBMTechnology)
