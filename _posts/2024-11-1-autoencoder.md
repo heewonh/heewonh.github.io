@@ -153,12 +153,11 @@ Together, the equations show a recursive computation of factor estimates ($f_t$)
 If the activation function were to be linear, the following optimization task would need to be solved to train the hyperparameters:
 
 $$
-\min \sum_{t=1}^{T} \left\| r_t - \beta'_{i,t} f_t \right\|^2 = \min_{W_0, W_1} \sum_{t=1}^{T} \left\| r_t - Z_{t-1} W_0 W_1 x_t \right\|^2
+\min \sum_{t=1}^{T} \left\| r_t - \beta_{i,t} f_t \right\|^2 = \min_{W_0, W_1} \sum_{t=1}^{T} \left\| r_t - Z_{t-1} W_0 W_1 x_t \right\|^2
 $$
 
-<!-- - $Z_t = (z'_{1,t}, z'_{2,t}, \dots, z'_{N,t})'$ : input layer of asset characteristics (yellow layer of left network) -->
-- $Z_t = (z\\'_{1,t}, z\\'_{2,t}, \dots, z\\'_{N,t})\\'$ : input layer of asset characteristics (yellow layer of left network)
-- $\beta'_{i,t} = Z_{t-1} W_0'$ : conditional factor loadings estimate (green layer of left network)
+- $Z_t = (z_{1,t}, z_{2,t}, \dots, z_{N,t})'$ : input layer of asset characteristics (yellow layer of left network)
+- $\beta_{i,t} = Z_{t-1} W_0$ : conditional factor loadings estimate (green layer of left network)
 - $x_t = \left( Z_{t-1}' Z_{t-1} \right)^{-1} Z_{t-1} r_t$ : input layer of portfolio returns (layer of pink neurons of right autoencoder)
 - $f_t = W_1 x_t$ : factor estimates (layer of purple neurons of right autoencoder)
 
