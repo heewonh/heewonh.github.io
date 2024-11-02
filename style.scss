@@ -107,7 +107,7 @@ li{
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: disc;
 }
 
 ol {
@@ -119,17 +119,10 @@ ol ul, ul ol, ul ul, ol ol {
 }
 
 ul ul, ol ul {
-  list-style-type: none;
+  list-style-type: disc;
 }
 
-ul li::before {
-  content: "•"; /* Unicode bullet character */
-  color: rgb(188, 188, 188); /* Set bullet color */
-  font-size: 2em; /* Optional: Adjust bullet size */
-  margin-right: 0.5em; /* Space between bullet and text */
-}
-
-ol li::marker {
+li::marker {
   color: rgb(188, 188, 188); /* Set bullet color */
   margin-right: 0.5em; /* Space between bullet and text */
 }
