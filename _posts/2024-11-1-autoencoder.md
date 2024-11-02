@@ -3,7 +3,7 @@ layout: post
 title: Autoencoder Asset Pricing Models
 ---
 
-Machine Learning (ML) in finance is a burgeoning field, and a paper published by Shihao Gu, Bryan Kelly, and Dacheng Xiu (GKX) introduces an interesting new asset pricing model that uses autoencoder neural networks.
+In a burgeoning field of machine learning (ML) in finance, a paper published by Shihao Gu, Bryan Kelly, and Dacheng Xiu (GKX, 2021) introduces a novel asset pricing model that leverages autoencoder neural networks. The underlying idea of the paper is elaborate yet intuitive, as it takes the next logical step in the evolution of asset pricing models.
 
 ### Background: Evolution of Empirical Asset Pricing
 
@@ -150,7 +150,7 @@ $$
 \beta_{i,t-1} = b^{(L_\beta)} + W^{(L_\beta)} z_{i,t-1}^{(L_\beta)}
 $$
 
-Altogether, it is a recursive computation of conditional factor loadings ($\beta_{i,t-1}$) using lagged asset characteristics $z_{i,t-1}$ as inputs. The asset characteristics are lagged as their data is not readily available; data update intervals range from monthly, quarterly, to annual releases.
+Altogether, it is a recursive computation of conditional factor loadings ($\beta_{i,t-1}$) using lagged asset characteristics ($z_{i,t-1}$) as inputs. The asset characteristics are lagged as their data is not readily available; data update intervals range from monthly, quarterly, to annual releases.
 
 The right autoencoder of the model used for factor estimates can be mathematically shown as follows: 
 
@@ -304,7 +304,7 @@ GKX also separately ranked the characteristic importance in factor loading estim
 ### Thoughts
 I believe GKX provides a very interesting novel asset pricing model that well employs ML techniques in order to address the limitations of previous asset pricing methodology. While dealing with non-linear models in finance can be dangerous due to the low signal-to-noise ratio in financial data and thus the greater likelihood of overfitting, it can be seen that GKX imposed numerous cautionary measures to account for such risks.
 
-I do, however, hold some quesitons, especially regarding the use of data.
+I do, however, hold some questions, especially regarding the use of data.
 
 Firstly, the data split seemed a bit unorthodox as of the 60 years of data available, only a quarter of it was used for training. Typically, more data is used for training than in testing to provide a more robust model, but GKX did the opposite. Hence, it could raise concerns about whether sufficient model training was done. Furthermore, in addition to the amount of training data used, its quality can be brought into question. GKX trained their model using the oldest data they had available, using returns data from 1950s to 1970s. This is concerning not only because older financial data is generally of less quality with lower credibility but more so because of the wide temporal gap between the financial market that the model was trained on and the market it was asked to understand and predict.Market conditions constantly change over time, and what was once considered important factors in the 1950s and 1970s may be less important in 2000s and 2010s.
 
@@ -313,6 +313,6 @@ Secondly, I had to wonder if the the overall data was enough to begin with. whil
 Lastly, I would like to point out an area of further research that could branch off from the work of GKX. I found the characteristic importance findings to be very interesting and think insights from them could be re-applied to the autoencoder model. For istance, it could be used for practical purposes: since only 20 of the 94 asset characteristics were realistically important, we could cut down on the asset characteristic input data for the factor loading neural network to only include the important 20 characteristics. This could speed up the training and re-fitting process of the model. It might also be interesting to see the performance of classical, known factor model fitted with the top 20 asset characteristics as its factors. It could greatly improve the model's performance but could also have adverse affects as the correlational relationship between the asset characteristics is yet to be known.
 
 ### References
-- Gu S., Kelly B., Xiu D. (2021) Autoencoder asset pricing models. J. Econometrics 222 (1), 429–450.
-- Kelly, B., Pruitt, S., Su, Y. (2019) Characteristics are covariances: A unified model of risk and return. J. Financ. Econ. 134 (3), 501–524.
-- [IBM Technology YouTube Video about Autoencoders](https://www.youtube.com/watch?v=qiUEgSCyY5o&ab_channel=IBMTechnology)
+1. Gu S., Kelly B., Xiu D. (2021) Autoencoder asset pricing models. J. Econometrics 222 (1), 429–450.
+2. Kelly, B., Pruitt, S., Su, Y. (2019) Characteristics are covariances: A unified model of risk and return. J. Financ. Econ. 134 (3), 501–524.
+3. [IBM Technology YouTube Video about Autoencoders](https://www.youtube.com/watch?v=qiUEgSCyY5o&ab_channel=IBMTechnology)
