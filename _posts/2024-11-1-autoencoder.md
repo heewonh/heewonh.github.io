@@ -52,7 +52,7 @@ KPS specifically used asset-specific covariates such as size, value, and momentu
 While IPCA is a notable improvement to empirical methodology in asset pricing, it is still bounded by the linearity restriction of PCA which allows for the simplification of reality, but fails to capture its complexities. And this is where the successor study GKX comes in. GKX generalizes the IPCA model by allowing for non-linearity with the use of autoencoder neural networks.
 
 Below figure summarizes the background for the study:
-![study background]({{ site.baseurl }}/images/autoencoder-background.png)
+<img src="/images/autoencoder-background.jpg" alt="study background" width="300">
 
 ### Why Autoencoder Makes Sense
 
@@ -258,7 +258,7 @@ Firstly, the data split seemed a bit unorthodox as of the 60 years of data avail
 
 Secondly, I had to wonder if the the overall data was enough to begin with. while the cross-sectional data seemed more than enough (considering the dropping of data filters), the time-series data was collected monthly for the total range of 60 years. This would yield a maximum of 720 datapoints per stock or portfolio along the time-series which could be considered insufficient especially for training neural networks.
 
-Lastly, I would like to point out an area of further research that could branch off from the work of GKX. I found the characteristic importance finding to be very interesting and think insights from them could be re-implemented within the autoencoder model. Firstly, it could be used for practical purposes: since only 20 of the 94 asset characteristics were realistically important, we could cut down on the asset characteristic input data for the factor loasing neural network to only include the important 20 characteristics. This could speed up the training and re-fitting process of the model. It might also be interesting to see the performance of a classic known factor models fitted with the top 20 asset characteristics as its factors. It could greatly improve the model's performance but could also have adverse affects as the correlational relationship between the asset characteristics is yet to be known.
+Lastly, I would like to point out an area of further research that could branch off from the work of GKX. I found the characteristic importance finding to be very interesting and think insights from it could be re-implemented within the autoencoder model. Firstly, it could be used for practical purposes: since only 20 of the 94 asset characteristics were realistically important, we could cut down on the asset characteristic input data for the factor loading neural network to only include the important 20 characteristics. This could speed up the training and re-fitting process of the model. It might also be interesting to see the performance of classic known factor model fitted with the top 20 asset characteristics as its factors. It could greatly improve the model's performance but could also have adverse affects as the correlational relationship between the asset characteristics is yet to be known.
 
 ### References
 - Gu S, Kelly B, Xiu D (2021) Autoencoder asset pricing models. J. Econometrics 222(1):429–450.
