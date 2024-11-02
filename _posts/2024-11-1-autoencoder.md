@@ -52,7 +52,7 @@ KPS specifically used asset-specific covariates such as size, value, and momentu
 While IPCA is a notable improvement to empirical methodology in asset pricing, it is still bounded by the linearity restriction of PCA which allows for the simplification of reality, but fails to capture its complexities. And this is where the successor study GKX comes in. GKX generalizes the IPCA model by allowing for non-linearity with the use of autoencoder neural networks.
 
 Below figure summarizes the background for the study:
-<img src="/images/autoencoder-background.jpg" alt="study background" width="300">
+<img src="{{ site.baseurl }}/images/autoencoder-background.jpg" alt="study background" width="300">
 
 ### Why Autoencoder Makes Sense
 
