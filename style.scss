@@ -223,9 +223,9 @@ img {
   margin: 0em;
   color: $darkGray;
   cursor: pointer;
-  font-family: "Garamond", serif;
-  font-weight: 500;
-  font-size: 27px;
+  font-family: $helveticaNeue;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .site-description {
@@ -244,6 +244,7 @@ nav {
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 16px;
+  font-weight: 300;
 
   @include mobile {
     float: left;
@@ -256,8 +257,6 @@ nav {
     margin-left: 20px;
     color: $darkGray;
     text-align: right;
-    font-weight: 300;
-    // letter-spacing: 0px;
 
     @include mobile {
       margin: 0 10px;
