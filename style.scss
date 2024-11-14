@@ -89,11 +89,11 @@ p.big {
 }
 
 a {
-  color: #4d83c5;
+  color: #325CC0;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: #4d83c5;
+    color: #325CC0;
   }
 }
 
@@ -261,7 +261,7 @@ nav {
 
     @include mobile {
       margin: 0 10px;
-      color: #4d83c5;
+      color: #325CC0;
     }
   }
 }
@@ -283,9 +283,9 @@ nav {
 .post {
   blockquote {
     margin: 1.8em .8em;
-    border-left: 2px solid #4d83c5;
+    border-left: 2px solid #325CC0;
     padding: 0.1em 1em;
-    color: #4d83c5;
+    color: #325CC0;
     font-size: 1em;
     font-style: italic;
   }
