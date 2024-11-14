@@ -243,27 +243,28 @@ nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
-  font-size: 16px;
+  font-size: 8px;
   font-weight: 300;
 
   @include mobile {
     float: left;
     margin-top: 9px;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   a {
     margin-left: 20px;
     color: $darkGray;
     font-family: $helveticaNeue;
-    font-size: 16px;
+    font-size: 8px;
     font-weight: 300;
     text-align: right;
 
     @include mobile {
       margin: 0 10px;
       color: #4d83c5;
+      font-size: 14px
     }
   }
 }
