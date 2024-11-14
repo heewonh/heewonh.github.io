@@ -256,6 +256,9 @@ nav {
   a {
     margin-left: 20px;
     color: $darkGray;
+    font-family: $helveticaNeue;
+    font-size: 16px;
+    font-weight: 300;
     text-align: right;
 
     @include mobile {
