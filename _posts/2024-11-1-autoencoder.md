@@ -211,7 +211,7 @@ The specifications of conditional autoencoder (CA) models used are as follows:
 - CA2: single linear layer for factor, 2nd hidden layer with 16 neurons for factor loading
 - CA3: single linear layer for factor, 3rd hidden layer with 8 neurons for factor loading
 
-To evaluate the performance of CA models in context, the following models were used as comparions:
+To evaluate the performance of CA models in context, the following models were used as comparisons:
 - Fama-French factor models (FF) with 1 ~ 6 factors (classical model of known factors)
 - PCA
 - IPCA
